@@ -6,7 +6,7 @@ import TodoItem from './TodoItem';
 type Props = {};
 
 const Todo = (props: Props) => {
-  const { handleChange, handleClick, todoItems, currentItem } = useTodo();
+  const { handleChange, handleClick, todoItems, currentItem, setTodoItems, setCurrentItem } = useTodo();
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen w-full">
@@ -20,6 +20,7 @@ const Todo = (props: Props) => {
               }}
               type="text"
               name="todoItem"
+              value={currentItem}
             />
           </div>
           <button
@@ -33,7 +34,7 @@ const Todo = (props: Props) => {
         </form>
       </div>
       {todoItems.map((item, index) => (
-        <TodoItem index={index} item={item} />
+        <TodoItem setCurrentItem={setCurrentItem} setTodoItems={setTodoItems} todoItems={todoItems} currentItem={currentItem} index={index} item={item} />
       ))}
     </div>
   );
