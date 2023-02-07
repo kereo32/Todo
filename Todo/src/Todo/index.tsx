@@ -10,11 +10,12 @@ const Todo = (props: Props) => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen w-full">
-      <div>
-        <form className="inline-flex">
-          <div className="flex flex-col items-center justify-center">
-            <label className=" mb-3">Enter your item</label>
+      <div className="flex flex-col items-center justify-center w-full">
+        <form className="flex flex-col items-center justify-center w-full">
+          <div className="flex flex-col items-center justify-center content-center w-2/5">
+            <label className=" mb-3 text-white font-Arimo text-3xl tracking-[0.16em] drop-shadow-lg">WHAT'S YOUR PLAN ?</label>
             <input
+              className="bg-input-grey w-full rounded-3xl mt-6 h-10 shadow-inner pl-2"
               onChange={(e) => {
                 handleChange(e);
               }}
@@ -24,18 +25,18 @@ const Todo = (props: Props) => {
             />
           </div>
           <button
+            className="hidden"
             onClick={(e) => {
               handleClick(e);
             }}
-            className="h-3/5 mt-9 ml-2"
-          >
-            <img src={addItem} />
-          </button>
+          ></button>
         </form>
       </div>
-      {todoItems.map((item, index) => (
-        <TodoItem setCurrentItem={setCurrentItem} setTodoItems={setTodoItems} todoItems={todoItems} currentItem={currentItem} index={index} item={item} />
-      ))}
+      <div className="flex flex-col items-center justify-center w-full mt-12">
+        {todoItems.map((item, index) => (
+          <TodoItem setCurrentItem={setCurrentItem} setTodoItems={setTodoItems} todoItems={todoItems} currentItem={currentItem} index={index} item={item} />
+        ))}
+      </div>
     </div>
   );
 };
